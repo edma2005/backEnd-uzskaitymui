@@ -3,8 +3,6 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const { MongoClient } = require("mongodb");
-const uniqid = require("uniqid");
-
 const app = express();
 const port = process.env.PORT || 8080;
 const { URI } = process.env;
@@ -29,7 +27,6 @@ app.post("/api/fill", async (req, res) => {
       city: elem.address.city,
       street: elem.address.street,
     }));
-
     const con = await client.connect();
     const users = await con
       .db("BackEndLastTest")
